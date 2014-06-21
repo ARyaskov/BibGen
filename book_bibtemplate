@@ -1,0 +1,5 @@
+<ng-bind-template>
+            {{book_author_surname}}, {{book_author_IO}} {{book_title}} : 
+            {{book_type}} / {{book_author_IO}} {{book_author_surname}} ; под ред. {{book_edited}} ; {{book_from_company}}
+. &mdash; {{book_pub_location}} : {{book_pub_company}}, {{book_pub_date}}. &mdash; {{book_pages}} с.
+</ng-bind-template>

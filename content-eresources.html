@@ -1,0 +1,244 @@
+<link rel="stylesheet" href="css/bootstrap.min.css">
+<link rel="stylesheet" href="css/pure-min.css">
+<link rel="stylesheet" href="css/jquery-ui.css">
+<link rel="stylesheet" href="css/main.css">
+<link rel="stylesheet" href="css/modifiers.css">
+
+<script src="js/angular.min.js"></script>
+<script src="js/jquery.min.js"></script>
+<script src="js/jquery-ui.min.js"></script>
+<script src="js/bootstrap.min.js"></script>
+
+
+<script src="js/sprintf.js"></script>
+<script src="js/tooltip_helpers.js"></script>
+<script src="js/word_replacements.js"></script>
+<script src="js/eresources_functions.js"></script>
+<script src="js/eresources.js"></script>
+
+
+<div id="content-eresources">      
+    <h4>
+        Библиографическое описание электронного ресурса
+    </h4>
+
+    <div class="bs-docs-common bs-docs-result">
+
+        <div id="resultbox">
+        </div>
+    </div>
+
+    <div class="row-fluid">
+
+        <div class="span3 pure-control-group bs-docs-common bs-docs-title">
+
+            <form class="pure-form pure-form-aligned" id="eresource_commonform">
+                <fieldset>
+
+                    <label for="eresource_title">Название ресурса</label> 
+                    <input id="eresource_title" type="text" ng-model="eresource_title">
+
+
+                    <div>
+                        <label for="eresource_type">Вид ресурса
+                            <!--<div class="question_mark" id="book_type_question">
+                                <img src="img/question.png" alt="Всплывающая подсказка"/>
+                            </div> -->
+                        </label>
+                       
+
+                        <select id="eresource_type" ng-model="eresource_type">
+                            <option value="none">&lt;Пусто&gt;</option>
+                            <option value="edata">Данные</option>
+                            <option value="eprogram">Программа</option>
+                        </select>
+                    </div>
+
+                </fieldset>
+            </form>
+        </div>
+
+        <div class="span3 pure-control-group bs-docs-common bs-docs-people">
+
+            <form class="pure-form pure-form-stacked" id="eresource_peopleform">
+
+                <fieldset>
+
+                    <div id="people_accordion">
+                        <h5>Авторы</h5>
+                        <div>
+                            
+                            <label for="eresources_isAuthorIsOrg">
+                                <input id="eresources_isAuthorIsOrg" type="checkbox"> Автор - организация?
+                            </label>
+                            
+
+                            <div>
+                                <div class="pure-control-group">
+                                    <label for="eresource_authors">ФИО автора(ов)</label>
+                                    <input id="eresource_authors" type="text" placeholder="Фамилия И.О., Фамилия И.О., ...">
+                                </div>  
+
+                            </div>
+                        </div>
+
+                        <h5>Редакторы</h5>
+                        <div>
+                            <div>
+                                <div class="pure-control-group">
+                                    <label for="eresource_editors">ФИО редактора(ов)</label>
+                                    <input id="eresource_editors" type="text" placeholder="Фамилия И.О., Фамилия И.О., ...">
+                                </div>  
+                            </div>
+                        </div>
+
+                        <h5>Составители</h5>
+                        <div>
+                            <div>
+                                <div class="pure-control-group">
+                                    <label for="eresource_cataloguers">ФИО составителя(ей)</label>
+                                    <input id="eresource_cataloguers" type="text" placeholder="Фамилия И.О., Фамилия И.О., ...">
+                                </div>  
+                            </div>
+                        </div>
+
+                        <h5>Программисты</h5>
+                        <div>
+                            <div>
+                                <div class="pure-control-group">
+                                    <label for="eresource_developers">ФИО программиста(ов)</label>
+                                    <input id="eresource_developers" type="text" placeholder="Фамилия И.О., Фамилия И.О., ...">
+                                </div>  
+                            </div>
+                        </div>
+
+                        <h5>Другие</h5>
+                        <div>
+
+                            <div>
+                                <div class="pure-control-group">
+                                    <label for="eresource_others_1_role">Наименование роли</label>
+                                    <input id="eresource_others_1_role" type="text" ng-model="eresource_others_1_role">
+
+                                    <label for="eresource_others_1">ФИО исполнителя(ей) роли "{{eresource_others_1_role}}"</label>
+                                    <input id="eresource_others_1" type="text" placeholder="Фамилия И.О., Фамилия И.О., ...">
+                                </div>  
+                                <div class="pure-control-group">
+                                    <label for="eresource_others_2_role">Наименование роли</label>
+                                    <input id="eresource_others_2_role" type="text" ng-model="eresource_others_2_role">
+
+                                    <label for="eresource_others_2">ФИО исполнителя(ей) роли "{{eresource_others_2_role}}"</label>
+                                    <input id="eresource_others_2" type="text" placeholder="Фамилия И.О., Фамилия И.О., ...">
+                                </div>  
+                                <div class="pure-control-group">
+                                    <label for="eresource_others_3_role">Наименование роли</label>
+                                    <input id="eresource_others_3_role" type="text" ng-model="eresource_others_3_role">
+
+                                    <label for="eresource_others_3">ФИО исполнителя(ей) роли "{{eresource_others_3_role}}"</label>
+                                    <input id="eresource_others_3" type="text" placeholder="Фамилия И.О., Фамилия И.О., ...">
+                                </div>  
+                            </div>
+                        </div>
+
+
+                    </div>
+
+                </fieldset>
+            </form>
+        </div>
+
+        <div class="span3 pure-control-group bs-docs-common bs-docs-edition">
+            <form class="pure-form pure-form-aligned" id="eresource_editionform">
+                <fieldset>
+                    <div id="edition_modifications_accordion">
+                        <h5>Модификации</h5>
+                        <div>
+                            
+                            <div>
+                                <label for="modification_synonim">Синоним модификации</label>
+                                <select id="modification_synonim" name="modification_synonim" ng-model="modification_synonim">
+                                    <option id="edition">Издание</option>
+                                    <option id="version">Версия</option>
+                                    <option id="issue">Выпуск</option>
+                                </select>
+                            </div>
+                            <div>
+                                <label for="version_number">{{modification_synonim}}</label>
+                                <input id="version_number" type="text" name="version_number">
+                            </div>
+
+                            
+                        </div>
+                    </div>
+
+                    <div>
+
+                        <label for="publication_location">Город издания</label>
+                        <input list="publication_location_list" id="publication_location_input">
+                        <datalist id="publication_location_list" ng-model="publication_location">
+                            <option value="none">&lt;Пусто&gt;</option>
+                            <option value="Москва"></option>
+                            <option value="Санкт-Петербург"></option>
+                            <option value="Волгоград"></option>
+                        </datalist>
+
+
+                    </div>
+                    <div>
+                        <label for="publication_date">Год издания</label> 
+                        <input id="publication_date" type="text" name="publication_date">
+                    </div>
+                    <div>
+                        <label for="pages_number">Количество страниц</label> 
+                        <input id="pages_number" type="text" name="pages_number">
+                    </div>
+
+                    <div id="edition_aux_accordion">
+                        <h5>Дополнительно</h5>
+                        <div>
+                            <div>
+                                <label for="series_title">Название серии</label> 
+                                <input id="series_title" type="text" name="series_title">
+                            </div>
+                            
+                        </div>
+                    </div>
+                    
+                    <div id="edition_notes_accordion">
+                        <h5>Модификации</h5>
+                        <div>
+                            
+                            <div>
+                                <label for="system_requirements">Системные требования</label>
+                                <input id="system_requirements" type="text" name="system_requirements">
+                            </div>
+                            <div>
+                                <label for="version_number">{{modification_synonim}}</label>
+                                <input id="version_number" type="text" name="version_number">
+                            </div>
+
+                            
+                        </div>
+                    </div>
+                </fieldset>
+            </form>
+        </div>
+
+        <div class="span3 pure-control-group bs-docs-common bs-docs-companies">
+            <form class="pure-form pure-form-aligned" id="book_companiesform">
+                <fieldset>
+                    <div>
+                        <label for="customer_company">Напечатано от имени</label> 
+                        <input id="customer_company" type="text" name="customer_company">
+                    </div>
+                    <div>
+                        <label for="publishing_company">Издательство или издающая организация</label>
+                        <input id="publishing_company" type="text" name="publishing_company">
+                    </div>
+                </fieldset>
+            </form>
+        </div>
+
+    </div>
+</div>
+

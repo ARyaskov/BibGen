@@ -1,0 +1,151 @@
+@charset "utf-8";
+
+root { 
+    display: block;
+}
+
+.bs-docs-common {
+    position: relative;
+    margin: 15px 0;
+    padding: 39px 19px 14px;
+    background-color: #fff;
+    border: 1px solid #ddd;
+    -webkit-border-radius: 4px;
+    -moz-border-radius: 4px;
+    border-radius: 4px;
+}
+
+.bs-docs-common:after {
+    content: "";
+    position: absolute;
+    top: -1px;
+    left: -1px;
+    padding: 3px 7px;
+    font-size: 12px;
+    font-weight: bold;
+    background-color: #f5f5f5;
+    border: 1px solid #ddd;
+    color: #9da0a4;
+    -webkit-border-radius: 4px 0 4px 0;
+    -moz-border-radius: 4px 0 4px 0;
+    border-radius: 4px 0 4px 0;
+}
+
+.bs-docs-common:after{
+    content: "Общее";
+}
+
+.bs-docs-result:after {
+    content: "Результат";
+}
+
+.bs-docs-title:after{
+    content: "Название";
+}
+
+
+
+.bs-docs-people:after{
+    content: "Люди";
+}
+
+.bs-docs-edition:after{
+    content: "Издание";
+}
+.bs-docs-companies:after{
+    content: "Организации";
+}
+
+#people_accordion > h5
+{
+    font-size: 80%;
+}
+
+#people_accordion > .ui-accordion-content{
+    padding: 1em 1.1em;
+}
+
+#people_accordion select
+{
+    font-size: 0.8em;
+}
+
+#people_accordion label
+{
+    font-size: 0.8em;
+}
+
+#edition_modifications_accordion > h5
+{
+    font-size: 80%;
+}
+
+#edition_modifications_accordion > .ui-accordion-content{
+    padding: 1em 1.1em;
+}
+
+#edition_modifications_accordion label
+{
+    font-size: 0.8em;
+}
+
+
+#edition_aux_accordion > h5
+{
+    font-size: 80%;
+}
+
+
+#edition_aux_accordion > .ui-accordion-content{
+    padding: 1em 1.1em;
+}
+
+#edition_aux_accordion label
+{
+    font-size: 0.8em;
+}
+
+input#revision_number
+{
+    width: 15%;
+}
+
+label[for="revision_number"]
+{
+    display: inline;
+}
+
+label[for="is_revised"]
+{
+    display: inline;
+}
+
+label[for="is_enlarged"]
+{
+    display: inline;
+}
+
+input#publication_date
+{
+    width: 30%;
+}
+
+input#pages_number
+{
+    width: 30%;
+}
+
+.question_mark
+{
+    display: inline;
+}
+
+.popover
+{
+    font-size: 0.9em;
+}
+
+.popover-title
+{
+    font-size: 1.1em;
+}

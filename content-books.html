@@ -1,0 +1,326 @@
+<link rel="stylesheet" href="css/bootstrap.min.css">
+<link rel="stylesheet" href="css/pure-min.css">
+<link rel="stylesheet" href="css/jquery-ui.css">
+<link rel="stylesheet" href="css/main.css">
+<link rel="stylesheet" href="css/modifiers.css">
+
+<script src="js/angular.min.js"></script>
+<script src="js/jquery.min.js"></script>
+<script src="js/jquery-ui.min.js"></script>
+<script src="js/bootstrap.min.js"></script>
+
+
+<script src="js/sprintf.js"></script>
+<script src="js/tooltip_helpers.js"></script>
+<script src="js/word_replacements.js"></script>
+<script src="js/books_functions.js"></script>
+<script src="js/books.js"></script>
+
+
+<div id="content-books">      
+    <h4>
+        Библиографическое описание книги
+    </h4>
+
+    <div class="bs-docs-common bs-docs-result">
+
+        <div id="resultbox">
+        </div>
+    </div>
+
+    <div class="row-fluid">
+
+        <div class="span3 pure-control-group bs-docs-common bs-docs-title">
+
+            <form class="pure-form pure-form-aligned" id="book_commonform">
+                <fieldset>
+
+                    <label for="book_title">Название книги</label> 
+                    <input id="book_title" type="text" ng-model="book_title">
+
+
+                    <div>
+                        <label for="book_type">Вид, жанр
+                            <div class="question_mark" id="book_type_question">
+                                <img src="img/question.png" alt="Всплывающая подсказка"/>
+                            </div>
+                        </label>
+
+                        <select id="book_type" ng-model="book_type">
+                            <option value="none">&lt;Пусто&gt;</option>
+                            <option value="monograph">Монография</option>
+                            <option value="collectionOfScientificArticles">Сборник научных статей</option>
+                            <option value="collectionOfScientificWorks">Сборник научных трудов</option>
+                            <option value="manual">Учебное пособие</option>
+                            <option value="textbook">Учебник</option>
+                        </select>
+                    </div>
+
+                </fieldset>
+            </form>
+        </div>
+
+        <div class="span3 pure-control-group bs-docs-common bs-docs-people">
+
+            <form class="pure-form pure-form-stacked" id="book_peopleform">
+
+                <fieldset>
+
+                    <div id="people_accordion">
+                        <h5>Авторы</h5>
+                        <div>
+
+                            <select id="authors_number" ng-model="authors_number">
+                                <option value="none">Без авторов</option>
+                                <option value="_1author">1 автор</option>
+                                <option value="_2authors">2 автора</option>
+                                <option value="_3authors">3 автора</option>
+                                <option value="_3Plusauthors">Более 3 авторов</option>
+                            </select>
+
+                            <div ng-switch on="authors_number" >
+                                <div ng-switch-default>
+                                    <div class="pure-control-group">
+                                        <label for="book_author1_1_surname">Фамилия автора</label>
+                                        <input id="book_author1_1_surname" type="text" ng-model="book_author1_1_surname">
+                                    </div>
+
+                                    <div class="pure-control-group">
+                                        <label for="book_author1_1_IO">И.[О.] автора</label>
+                                        <input id="book_author1_1_IO" type="text" ng-model="book_author1_1_IO">
+                                    </div>
+                                </div>
+
+                                <div ng-switch-when="none">
+                                </div>
+
+                                <div ng-switch-when="_1author">
+
+                                    <div class="pure-control-group">
+                                        <label for="book_author1_1_surname">Фамилия автора</label>
+                                        <input id="book_author1_1_surname" type="text" ng-model="book_author1_1_surname">
+                                    </div>
+
+                                    <div class="pure-control-group">
+                                        <label for="book_author1_1_IO">И.[О.] автора</label>
+                                        <input id="book_author1_1_IO" type="text" ng-model="book_author1_1_IO">
+                                    </div>
+
+                                </div>
+
+                                <div ng-switch-when="_2authors">
+                                    <div class="pure-control-group">
+                                        <label for="book_author2_1_surname">Фамилия автора 1</label>
+                                        <input id="book_author2_1_surname" type="text" ng-model="book_author2_1_surname">
+                                    </div>
+
+                                    <div class="pure-control-group">
+                                        <label for="book_author2_1_IO">И.[О.] автора 1</label>
+                                        <input id="book_author2_1_IO" type="text" ng-model="book_author2_1_IO">
+                                    </div>
+                                    <div class="pure-control-group">
+                                        <label for="book_author2_2_surname">Фамилия автора 2</label>
+                                        <input id="book_author2_2_surname" type="text" ng-model="book_author2_2_surname">
+                                    </div>
+
+                                    <div class="pure-control-group">
+                                        <label for="book_author2_2_IO">И.[О.] автора 2</label>
+                                        <input id="book_author2_2_IO" type="text" ng-model="book_author2_2_IO">
+                                    </div>
+
+                                </div>
+                                <div ng-switch-when="_3authors">
+                                    <div class="pure-control-group">
+                                        <label for="book_author3_1_surname">Фамилия автора 1</label>
+                                        <input id="book_author3_1_surname" type="text"  ng-model="book_author3_1_surname">
+                                    </div>
+
+                                    <div class="pure-control-group">
+                                        <label for="book_author3_1_IO">И.[О.] автора 1</label>
+                                        <input id="book_author3_1_IO" type="text"  ng-model="book_author3_1_IO">
+                                    </div>
+                                    <div class="pure-control-group">
+                                        <label for="book_author3_2_surname">Фамилия автора 2</label>
+                                        <input id="book_author3_2_surname" type="text" ng-model="book_author3_2_surname">
+                                    </div>
+
+                                    <div class="pure-control-group">
+                                        <label for="book_author3_2_IO">И.[О.] автора 2</label>
+                                        <input id="book_author3_2_IO" type="text"  ng-model="book_author3_2_IO">
+                                    </div>
+
+                                    <div class="pure-control-group">
+                                        <label for="book_author3_3_surname">Фамилия автора 3</label>
+                                        <input id="book_author3_3_surname" type="text"  ng-model="book_author3_3_surname">
+                                    </div>
+
+                                    <div class="pure-control-group">
+                                        <label for="book_author3_3_IO">И.[О.] автора 3</label>
+                                        <input id="book_author3_3_IO" type="text"  ng-model="book_author3_3_IO">
+                                    </div>
+
+                                </div>
+                                <div ng-switch-when="_3Plusauthors">
+                                    <div class="pure-control-group">
+                                        <label for="book_author3Plus1_surname">Фамилия автора 1</label>
+                                        <input id="book_author3Plus1_surname" type="text" ng-model="book_author3Plus1_surname">
+                                    </div>
+
+                                    <div class="pure-control-group">
+                                        <label for="book_author3Plus1_IO">И.[О.] автора 1</label>
+                                        <input id="book_author3Plus1_IO" type="text" ng-model="book_author3Plus1_IO">
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+
+                        <h5>Составитель</h5>
+                        <div>
+
+                            <div>
+                                <div class="pure-control-group">
+                                    <label for="book_cataloguer_surname">Фамилия составителя</label>
+                                    <input id="book_cataloguer_surname" type="text" ng-model="book_cataloguer_surname">
+                                </div>
+
+                                <div class="pure-control-group">
+                                    <label for="book_cataloguer_IO">И.О. составителя</label>
+                                    <input id="book_cataloguer_IO" type="text" ng-model="book_cataloguer_IO">
+                                </div>
+                            </div>
+
+                        </div>
+
+                        <h5>Переводчик</h5>
+                        <div>
+
+                            <div>
+                                <div class="pure-control-group">
+                                    <label for="book_interpreter_surname">Фамилия переводчика</label>
+                                    <input id="book_interpreter_surname" type="text" ng-model="book_interpreter_surname">
+                                </div>
+
+                                <div class="pure-control-group">
+                                    <label for="book_interpreter_IO">И.О. переводчика</label>
+                                    <input id="book_interpreter_IO" type="text" ng-model="book_interpreter_IO">
+                                </div>
+
+                                <div class="pure-control-group">
+                                    <label for="translation_from">Перевод с</label>
+                                    <select id="translation_from">
+                                        <option value="none">Без перевода</option>
+                                        <option value="english">Английского</option>
+                                        <option value="german">Немецкого</option>
+                                        <option value="french">Французского</option>
+                                        <option value="ukrainian">Украинского</option>
+                                        <option value="belorussian">Белорусского</option>
+                                    </select>
+                                </div>
+                            </div>
+
+                        </div>
+
+                        <h5>Редактор</h5>
+                        <div>
+
+                            <div>
+                                <div class="pure-control-group">
+                                    <label for="book_editor_surname">Фамилия редактора</label>
+                                    <input id="book_editor_surname" type="text" ng-model="book_editor_surname">
+                                </div>
+
+                                <div class="pure-control-group">
+                                    <label for="book_editor_IO">И.О. редактора</label>
+                                    <input id="book_editor_IO" type="text" ng-model="book_editor_IO">
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+
+                </fieldset>
+            </form>
+        </div>
+
+        <div class="span3 pure-control-group bs-docs-common bs-docs-edition">
+            <form class="pure-form pure-form-aligned" id="book_editionform">
+                <fieldset>
+                    <div id="edition_modifications_accordion">
+                        <h5>Модификации</h5>
+                        <div>
+                            <div>
+                                <input id="revision_number" type="text" name="revision_number">
+                                <label for="revision_number">-е издание</label>
+
+                            </div>
+
+                            <div>
+                                <input id="is_revised" type="checkbox" name="is_revised">
+                                <label for="is_revised">Переработанное</label>
+                            </div>
+
+                            <div>
+                                <input id="is_enlarged" type="checkbox" name="is_enlarged">
+                                <label for="is_enlarged">Дополненное</label>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div>
+
+                        <label for="publication_location">Город издания</label>
+                        <input list="publication_location_list" id="publication_location_input">
+                        <datalist id="publication_location_list" ng-model="publication_location">
+                            <option value="none">&lt;Пусто&gt;</option>
+                            <option value="Москва"></option>
+                            <option value="Санкт-Петербург"></option>
+                            <option value="Волгоград"></option>
+                        </datalist>
+
+
+                    </div>
+                    <div>
+                        <label for="publication_date">Год издания</label> 
+                        <input id="publication_date" type="text" name="publication_date">
+                    </div>
+                    <div>
+                        <label for="pages_number">Количество страниц</label> 
+                        <input id="pages_number" type="text" name="pages_number">
+                    </div>
+
+                    <div id="edition_aux_accordion">
+                        <h5>Дополнительно</h5>
+                        <div>
+                            <div>
+                                <label for="series_title">Название серии</label> 
+                                <input id="series_title" type="text" name="series_title">
+                            </div>
+                            <div>
+                                <label for="notes">Примечания</label> 
+                                <input id="notes" type="text" name="notes">
+                            </div>
+                        </div>
+                    </div>
+                </fieldset>
+            </form>
+        </div>
+
+        <div class="span3 pure-control-group bs-docs-common bs-docs-companies">
+            <form class="pure-form pure-form-aligned" id="book_companiesform">
+                <fieldset>
+                    <div>
+                        <label for="customer_company">Напечатано от имени</label> 
+                        <input id="customer_company" type="text" name="customer_company">
+                    </div>
+                    <div>
+                        <label for="publishing_company">Издательство или издающая организация</label>
+                        <input id="publishing_company" type="text" name="publishing_company">
+                    </div>
+                </fieldset>
+            </form>
+        </div>
+
+    </div>
+</div>
+
