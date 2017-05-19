@@ -31,6 +31,18 @@ function uiInit()
     });
     
     buildTooltips();
+	
+	
+	var clip = new ZeroClipboard( document.getElementById("copy-to-clipboard-button") );
+	 clip.on( 'ready', function(event) {
+        clip.on( 'copy', function(event) {
+          event.clipboardData.setData('text/plain',  document.getElementById("resultbox").innerHTML);
+        } );
+		clip.on( 'aftercopy', function(event) {
+         
+        } );
+      } );
+
 }
 
 

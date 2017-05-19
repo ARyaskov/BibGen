@@ -22,22 +22,18 @@
         Библиографическое описание книги
     </h4>
 
-    <div class="bs-docs-common bs-docs-result">
-
-        <div id="resultbox">
-        </div>
-    </div>
+    <div class="bs-docs-common bs-docs-result"><div id="resultbox"></div>
+	<button id="copy-to-clipboard-button">Скопировать в буфер!</button>
+    <script src="js/ZeroClipboard.min.js"></script>
+	
+	</div>
 
     <div class="row-fluid">
-
         <div class="span3 pure-control-group bs-docs-common bs-docs-title">
-
             <form class="pure-form pure-form-aligned" id="book_commonform">
                 <fieldset>
-
                     <label for="book_title">Название книги</label> 
                     <input id="book_title" type="text" ng-model="book_title">
-
 
                     <div>
                         <label for="book_type">Вид, жанр
@@ -69,7 +65,6 @@
                     <div id="people_accordion">
                         <h5>Авторы</h5>
                         <div>
-
                             <select id="authors_number" ng-model="authors_number">
                                 <option value="none">Без авторов</option>
                                 <option value="_1author">1 автор</option>
